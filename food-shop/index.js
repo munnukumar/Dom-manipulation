@@ -1,3 +1,4 @@
+//get Element by Id
 const heading = document.getElementById("header");
 heading.style.backgroundColor = "green";
 heading.style.borderBottom = "3px solid orange";
@@ -13,10 +14,20 @@ const thanks = document.getElementById("thanks");
 thanks.innerHTML = "<p>Please visit us again</p>";
 
 
-
+//get Elements by class name
 const fruit = document.getElementsByClassName("fruit");
 fruit[2].style.background = "yellow";
 
 for(let i = 0; i<fruit.length; i++){
   fruit[i].style.fontWeight = "bold"
+}
+
+//Get Elements By ID
+const tag = document.getElementsByTagName("li");
+
+tag[4].style.color = "blue";
+tag[1].style.fontWeight = "italic";
+
+for(let i=0; i<tag.length; i++){
+  tag[i].style.fontStyle = "italic";
 }
