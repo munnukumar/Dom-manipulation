@@ -76,3 +76,36 @@ function handleFormSubmit(event){
     localStorage.setItem(event.target.email.value, myObj_serialised);
 }
 module.exports = handleFormSubmit;
+
+
+//task_15 (Having Delete Functionality)
+// In this task you want to provide the user a facility that if he adds an item to the list by mistake, then he is able to remove it via a delete button.
+
+// Deliverables:
+// 1. The 'li' that you are appending to the unordered list, make sure that it has a delete button.
+// 2. When you click on that delete button, then that particular user's details should be removed from the screen and from the local storage.
+            
+function handleFormSubmit(event) {
+    event.preventDefault();
+    let myObj = {
+        username: event.target.username.value,
+        email: event.target.email.value,
+        phone: event.target.phone.value,
+    }
+    let myObj_serialised = JSON.stringify(myObj);
+    localStorage.setItem(event.target.email.value, myObj_serialised);
+    const ul = document.querySelector("ul");
+    const li = document.createElement("li");
+
+  li.innerHTML = event.target.username.value + "-" + event.target.email.value + "-" + event.target.phone.value + "<button type='button' class='delete-button' data-email='" + event.target.email.value + "'>Delete</button>";
+    li.id = event.target.email.value;
+    ul.appendChild(li);
+
+    const deleteButton = li.querySelector(".delete-button");
+    deleteButton.addEventListener("click", function () {
+        document.getElementById(event.target.email.value).remove();
+        localStorage.removeItem(event.target.email.value);
+    });
+}
+
+module.exports = handleFormSubmit;
